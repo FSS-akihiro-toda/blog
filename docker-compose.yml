@@ -2,9 +2,9 @@ version: "3"
 services:
   db:
     image: mariadb:10.5.8
-    container_name: blogpost-db
+    container_name: blog-db
     restart: always
-    env_file: .env
+    env_file: db.env
     networks:
       djangoNet:
         ipv4_address: 172.10.0.4
@@ -13,7 +13,7 @@ services:
 
   web:
     build: .
-    container_name: blogpost-web
+    container_name: blog-web
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - ./blogproject:/code
