@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+    <h1 class="dispaly-4">ブログ</h1>
+    <p class="lead">記事一覧です</p>
+
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'create' %}" class="btn btn-primary">新規作成</a>
+    {% for item in object_list %}
+    <div class="card">
+        <div class="card-header">{{ item.category }}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.title}}</h5>
+            <h6 class="card-title">{{ item.postdate }}</h6>
+            <!-- <p class="card-text">{{ item.content }}</p> -->
+            <a href="{% url 'detail' item.pk %}" class="btn btn-primary">詳細へ</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
